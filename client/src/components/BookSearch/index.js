@@ -3,22 +3,21 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './BookSearch.css';
-import SearchContext from '../../utils/SearchContext';
+import API from "../../utils/API";
 
 function BookSearch() {
-
-    const [book, setBook] = useState("");
-    const [results, setResults] = useState([]);
+    const [search, setSearch] = useState("");
+    const [books, setBooks] = useState([]);
 
     function handleChange(e){
-        const book = e.target.value;
-        setBook(book);
+        const search = e.target.value;
+        setSearch(search);
     }
 
     function handleSubmit(e){
         e.preventDefault();
-        console.log(book);
-
+        API.searchBook(search)
+            .then(setBooks(search));
     }
 
     return (
