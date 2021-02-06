@@ -4,6 +4,7 @@ import NavComp from './components/Nav';
 import JumbotronComp from './components/Jumbotron';
 import Search from './pages/Search';
 import Saved from './pages/Saved';
+import NoMatch from './pages/NoMatch';
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route exact path="/saved">
             <Saved />
+          </Route>
+          <Route exact path="/noMatch">
+            <NoMatch />
           </Route>
         </Switch>
       </div>
