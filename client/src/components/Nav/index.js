@@ -1,13 +1,18 @@
 import React from "react";
-
-function Nav() {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a className="navbar-brand" href="/">
-        React Google Books Search
-      </a>
-    </nav>
-  );
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+function NavComp() {
+    return (
+        <>
+        <Navbar bg="dark" variant="dark">
+            <Navbar.Brand href="#home">Google Books</Navbar.Brand>
+            <Nav className="mr-auto">
+                <Nav.Link href="#home">Search</Nav.Link>
+                <Nav.Link href="#features">Saved</Nav.Link>
+            </Nav>
+        </Navbar>
+        </>
+    );
 }
 
-export default Nav;
+export default NavComp;
