@@ -5,9 +5,7 @@ const reducer = (state, action) => {
         case "search":
             return {
                 ...state,
-                numberOne: action.numberOne,
-                numberTwo: action.numberTwo,
-                answers: []
+                results: []
             };
         default:
             return state;
