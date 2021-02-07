@@ -1,24 +1,31 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useContext, useReducer } from "react";
+
+const SearchContext = createContext();
+const { Provider } = SearchContext;
 
 const reducer = (state, action) => {
     switch (action.type) {
         case "search":
             return {
                 ...state,
-                results: []
+                results: action.results
             };
         default:
             return state;
     }
 }
 
-const SearchContext = ({ value = [], ...props }) => {
+const SearchProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = useReducer(reducer, {
         search: "",
         results: [],
         saved: []
-    })
+    });
     return <Provider value={[state, dispatch]} {...props} />
 };
 
-export default SearchContext;
+const useSearchContext = () => {
+    return useContext(SearchContext);
+}
+
+export { SearchProvider, useSearchContext };

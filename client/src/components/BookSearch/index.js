@@ -7,7 +7,7 @@ import API from "../../utils/API";
 
 function BookSearch() {
     const [search, setSearch] = useState("");
-    const [books, setBooks] = useState([]);
+    
 
     function handleChange(e){
         const search = e.target.value;
@@ -17,7 +17,9 @@ function BookSearch() {
     function handleSubmit(e){
         e.preventDefault();      
         API.searchBook(search)
-            .then(setBooks(search));
+            .then(
+
+            );
     }
 
     return (
