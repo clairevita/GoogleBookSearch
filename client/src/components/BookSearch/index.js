@@ -15,14 +15,14 @@ function BookSearch() {
     }
 
     function handleSubmit(e){
-        e.preventDefault();
+        e.preventDefault();      
         API.searchBook(search)
             .then(setBooks(search));
     }
 
     return (
         <Jumbotron className="Container">
-            <form onSubmit={handleSubmit}>
+            <form >
             <Form.Group>
                 <Form.Label>Book</Form.Label>
                 <Form.Control 
@@ -31,7 +31,7 @@ function BookSearch() {
                 onChange={handleChange}
                 />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" onClick={handleSubmit}>
                 Submit
             </Button>
             </form>
