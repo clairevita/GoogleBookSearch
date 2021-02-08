@@ -20,12 +20,13 @@ function BookSearch() {
         API.searchBook(search)
             .then(res => {
                 const stateResults = res.data.items;
-                console.log(stateResults)
+                // console.log(stateResults)
                 dispatch({
                     type: "search",
+                    search: search,
                     results: stateResults,
+                    saved: state.saved
                 });
-                console.log(state)
             });
     }
 

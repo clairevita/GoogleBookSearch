@@ -1,31 +1,33 @@
 import React, { createContext, useContext, useReducer } from "react";
 
-const SearchContext = createContext();
+const SearchContext = createContext(
+ {
+    search: "fuck",
+    results: [],
+    saved: []
+}
+);
 const { Provider } = SearchContext;
 
-const reducer = (state, action) => {
+function reducer (state, action) {
     switch (action.type) {
         case "search":
-            console.log(action.results);
             return {
-                ...state,
-                results: action.results
+                search: action.search,
+                results: action.results,
+                saved: action.saved
             };
         default:
             return state
         }
 }
 
-const SearchProvider = ({ value = [], ...props }) => {
-    const [state, dispatch] = useReducer(reducer, {
-        search: "",
-        results: [],
-        saved: []
-    });
+function SearchProvider({ value = [], ...props }) {
+    const [state, dispatch] = useReducer(reducer, []);
     return <Provider value={[state, dispatch]} {...props} />
 };
 
-const useSearchContext = () => {
+function useSearchContext() {
     return useContext(SearchContext);
 }
 
