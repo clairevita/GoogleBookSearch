@@ -4,10 +4,11 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './BookSearch.css';
 import API from "../../utils/API";
+import { useSearchContext } from '../../utils/SearchContext';
 
 function BookSearch() {
     const [search, setSearch] = useState("");
-    
+    const [state, dispatch] = useSearchContext();
 
     function handleChange(e){
         const search = e.target.value;
@@ -18,7 +19,13 @@ function BookSearch() {
         e.preventDefault();      
         API.searchBook(search)
             .then(res => {
-                let results = res.data.items; 
+                const stateResults = res.data.items;
+                console.log(stateResults)
+                dispatch({
+                    type: "search",
+                    results: stateResults,
+                });
+                console.log(state)
             });
     }
 

@@ -6,13 +6,14 @@ const { Provider } = SearchContext;
 const reducer = (state, action) => {
     switch (action.type) {
         case "search":
+            console.log(action.results);
             return {
                 ...state,
                 results: action.results
             };
         default:
-            return state;
-    }
+            return state
+        }
 }
 
 const SearchProvider = ({ value = [], ...props }) => {
