@@ -17,9 +17,9 @@ function BookSearch() {
     function handleSubmit(e){
         e.preventDefault();      
         API.searchBook(search)
-            .then(
-
-            );
+            .then(res => {
+                let results = res.data.items; 
+            });
     }
 
     return (
