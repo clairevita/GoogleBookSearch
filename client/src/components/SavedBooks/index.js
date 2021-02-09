@@ -2,13 +2,17 @@ import React from 'react';
 import { Card, Row, Col, Button, Image } from "react-bootstrap";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import { useSearchContext } from '../../utils/SearchContext';
+import './SavedBooks.css';
 
 function SavedBooks() {
     const [state, dispatch] = useSearchContext();
     let saved = state.saved;
-
+    return (
         <Jumbotron className="Container">
-            {saved.map((book) => (
+            {!state.search ?
+            <h5 style={{ color: "#2ab4e3" }}>When You Save a Book You'll Find it Here!</h5>
+            :
+            saved.map((book) => (
                 <Card className="justify-content-sm-center m-3 p-3" key={book.volumeInfo.link}>
                     <Row>
                         <Col sm={2} className="text-center p-2">
@@ -35,8 +39,8 @@ function SavedBooks() {
                         </Col>
                     </Row>
                 </Card>
-
             ))}
-    </Jumbotron>
+        </Jumbotron>
+    )
 }
 export default SavedBooks;
