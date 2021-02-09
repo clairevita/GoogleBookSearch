@@ -45,7 +45,7 @@ function Results() {
                                         className="mr-2 mb-2"
                                     >More Info</Button>
                                     <Button
-                                        onClick={() => handleSave(book.selfLink)}
+                                        onClick={() => handleSave(book)}
                                         className="mr-2 mb-2"
                                     >Save Book</Button>
                                 </Col>

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react";
+import API from './API';
 
 const SearchContext = createContext(
     {
@@ -19,7 +20,7 @@ function reducer(state, action) {
             };
         case "save":
             return {
-  
+                
             };
         case "delete":
             return {
