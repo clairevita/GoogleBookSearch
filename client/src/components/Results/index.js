@@ -8,18 +8,22 @@ import API from '../../utils/API';
 function Results() {
     const [state, dispatch] = useSearchContext();
     let results = state.results;
-
+    console.log(state);
     function handleSave(book) {
-        const currentSaved = state.saved;
-        API.saveBook(book)
-        .then(
+        let newSaves;
+        if (!state.saved){
+            newSaves = [book];
+        } else {
+            newSaves = state.saved.concat([book]);
+        }
             dispatch ({
                 type: "save",
                 search: state.search,
                 results: state.results,
-                saved: currentSaved.push([book])
+                saved: newSaves
             })
-        )
+            API.saveBook(book);
+            console.log(state);
     }
 
     return (

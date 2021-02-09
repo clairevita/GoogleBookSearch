@@ -12,6 +12,7 @@ import { SearchProvider } from './utils/SearchContext';
 function App() {
   return (
     <Router>
+      <div>
       <SearchProvider>
         <NavComp />
         <JumbotronComp />
@@ -27,6 +28,7 @@ function App() {
           </Route>
         </Switch>
       </SearchProvider>
+      </div>
     </Router>
   );
 }

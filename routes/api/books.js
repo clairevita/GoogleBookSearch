@@ -7,7 +7,7 @@ router
   .post(bookController.create);
 
 router
-  .get(booksController.findById)
+  .get(bookController.findById)
   .delete(bookController.remove);
 
 module.exports = router;

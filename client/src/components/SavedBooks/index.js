@@ -7,13 +7,12 @@ import API from '../../utils/API';
 
 function SavedBooks() {
     const [state, dispatch] = useSearchContext();
-    
     return (
         <Jumbotron className="Container">
             {!state.saved ?
             <h5 style={{ color: "#2ab4e3" }}>When You Save a Book You'll Find it Here!</h5>
             :
-            saved.map((book) => (
+            state.saved.map((book) => (
                 <Card className="justify-content-sm-center m-3 p-3" key={book.volumeInfo.link}>
                     <Row>
                         <Col sm={2} className="text-center p-2">
