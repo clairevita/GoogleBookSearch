@@ -1,0 +1,42 @@
+import React from 'react';
+import { Card, Row, Col, Button, Image } from "react-bootstrap";
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import { useSearchContext } from '../../utils/SearchContext';
+
+function SavedBooks() {
+    const [state, dispatch] = useSearchContext();
+    let saved = state.saved;
+
+        <Jumbotron className="Container">
+            {saved.map((book) => (
+                <Card className="justify-content-sm-center m-3 p-3" key={book.volumeInfo.link}>
+                    <Row>
+                        <Col sm={2} className="text-center p-2">
+                            <Image
+                                src={book.volumeInfo.imageLinks.thumbnail}
+                                alt={book.volumeInfo.title}
+                                rounded
+                                fluid
+                            />
+                        </Col>
+                        <Col sm={10} className="p-2">
+                            <h5>{book.volumeInfo.title}</h5>
+                            <h6>by {book.volumeInfo.authors}</h6>
+                            <p>{book.volumeInfo.description}</p>
+                            <Button
+                                href={book.volumeInfo.infoLink}
+                                target="blank"
+                                className="mr-2 mb-2"
+                            >More Info</Button>
+                            <Button
+                                // onClick={() => this.handleSave(book)}
+                                className="mr-2 mb-2"
+                            >Delete Book</Button>
+                        </Col>
+                    </Row>
+                </Card>
+
+            ))}
+    </Jumbotron>
+}
+export default SavedBooks;
