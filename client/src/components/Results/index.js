@@ -10,8 +10,16 @@ function Results() {
     let results = state.results;
 
     function handleSave(book) {
-        API.saveBook(book);
-        console.log(book)
+        const currentSaved = state.saved;
+        API.saveBook(book)
+        .then(
+            dispatch ({
+                type: "save",
+                search: state.search,
+                results: state.results,
+                saved: currentSaved.push([book])
+            })
+        )
     }
 
     return (

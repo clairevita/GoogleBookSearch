@@ -7,7 +7,6 @@ import API from '../../utils/API';
 
 function SavedBooks() {
     const [state, dispatch] = useSearchContext();
-    let saved = state.saved;
     
     return (
         <Jumbotron className="Container">
@@ -35,7 +34,7 @@ function SavedBooks() {
                                 className="mr-2 mb-2"
                             >More Info</Button>
                             <Button
-                                // onClick={() => this.handleSave(book)}
+                                // onClick={() => this.handleDelete(book)}
                                 className="mr-2 mb-2"
                             >Delete Book</Button>
                         </Col>
