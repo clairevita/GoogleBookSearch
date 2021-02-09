@@ -10,8 +10,11 @@ function Results() {
     return (
         <div>
             <Jumbotron className="Container">
-                {!state.results ?
-                    <h5 style={{ color: "#2ab4e3" }}>No Results Found</h5>
+                {!state.search ?
+                    <h5 style={{ color: "#2ab4e3" }}>Search for a Book</h5>
+                    :
+                    !state.results ?
+                    <h5 style={{ color: "#2ab4e3" }}>No Results Were Found</h5>
                     :
                     results.map((book) => (
 

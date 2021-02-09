@@ -2,7 +2,7 @@ import React, { createContext, useContext, useReducer } from "react";
 
 const SearchContext = createContext(
  {
-    search: "fuck",
+    search: "",
     results: [],
     saved: []
 }

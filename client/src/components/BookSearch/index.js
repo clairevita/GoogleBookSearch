@@ -27,6 +27,7 @@ function BookSearch() {
                     results: stateResults,
                     saved: state.saved
                 });
+            console.log(state);
             });
     }
 
