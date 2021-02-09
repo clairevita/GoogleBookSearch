@@ -9,7 +9,20 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.Book.create(req.body)
+    db.Book.create({
+      _id: req.body._id,
+      title: req.body.volumeInfo.title,
+      authors: req.body.volumeInfo.authors,
+      description: req.body.volumeInfo.description,
+      image: req.body.volumeInfo.imageLinks.thumbnail,
+      link: req.body.volumeInfo.infoLink
+    })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findById: function(req, res) {
+    db.Book
+      .findOne({id: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -18,6 +31,5 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  },
-  //*(get) will load your single html page
+  }
 };
