@@ -6,11 +6,11 @@ export default {
     },
 
     getBooks: function(){
-        return axios.get('/api/books').then(results => results.data)
+        return axios.get('/api/books/').then(results => results.data)
     },
 
     saveBook: function(id){
-        return axios.post('/api/books' + id).then(results => results.data);
+        return axios.post('/api/books/' + id).then(results => results.data);
     },
 
     deleteBook: function(id){

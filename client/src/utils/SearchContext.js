@@ -1,15 +1,15 @@
 import React, { createContext, useContext, useReducer } from "react";
 
 const SearchContext = createContext(
- {
-    search: "",
-    results: [],
-    saved: []
-}
+    {
+        search: "",
+        results: [],
+        saved: []
+    }
 );
 const { Provider } = SearchContext;
 
-function reducer (state, action) {
+function reducer(state, action) {
     switch (action.type) {
         case "search":
             return {
@@ -17,9 +17,17 @@ function reducer (state, action) {
                 results: action.results,
                 saved: action.saved
             };
+        case "save":
+            return {
+  
+            };
+        case "delete":
+            return {
+
+            };
         default:
             return state
-        }
+    }
 }
 
 function SearchProvider({ value = [], ...props }) {

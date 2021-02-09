@@ -3,10 +3,17 @@ import { Card, Row, Col, Button, Image } from "react-bootstrap";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import { useSearchContext } from '../../utils/SearchContext';
 import './Results.css';
+import API from '../../utils/API';
 
 function Results() {
     const [state, dispatch] = useSearchContext();
     let results = state.results;
+
+    function handleSave(book) {
+        API.saveBook(book);
+        console.log(book)
+    }
+
     return (
         <div>
             <Jumbotron className="Container">
@@ -17,7 +24,7 @@ function Results() {
                     <h5 style={{ color: "#2ab4e3" }}>No Results Were Found</h5>
                     :
                     results.map((book) => (
-
+                        
                         <Card className="justify-content-sm-center m-3 p-3" key={book.volumeInfo.link}>
                             <Row>
                                 <Col sm={2} className="text-center p-2">
@@ -38,13 +45,12 @@ function Results() {
                                         className="mr-2 mb-2"
                                     >More Info</Button>
                                     <Button
-                                        // onClick={() => this.handleSave(book)}
+                                        onClick={() => handleSave(book.selfLink)}
                                         className="mr-2 mb-2"
                                     >Save Book</Button>
                                 </Col>
                             </Row>
                         </Card>
-
                     ))}
             </Jumbotron>
         </div>
