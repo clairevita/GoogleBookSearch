@@ -3,7 +3,7 @@ import API from './API';
 
 const SearchContext = createContext(
     {
-        search: "Hello?",
+        search: "",
         results: [],
         saved: []
     }
@@ -20,9 +20,7 @@ function reducer(state, action) {
             };
         case "save":
             return {
-                search: action.search,
-                results: action.results,
-                saved: action.saved
+                
             };
         case "delete":
             return {
