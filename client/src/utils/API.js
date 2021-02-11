@@ -6,14 +6,14 @@ export default {
     },
 
     getBooks: function(){
-        return axios.get('/api/books/').then(results => results.data)
+        return axios.get('/api/books/' + id);
     },
 
     saveBook: function(id){
-        return axios.post('/api/books/' + id).then(results => results.data);
+        return axios.post('/api/books/' + id);
     },
 
     deleteBook: function(id){
-        return axios.delete('/api/books/' + id).then(results => results.data);
+        return axios.delete('/api/books/' + id);
     }
 }
