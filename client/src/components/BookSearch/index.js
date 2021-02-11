@@ -1,53 +1,50 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './BookSearch.css';
 import API from "../../utils/API";
-import { useSearchContext } from '../../utils/SearchContext';
 
-function BookSearch() {
-    const [search, setSearch] = useState("");
-    const [state, dispatch] = useSearchContext();
+class BookSearch extends Component {
 
-    function handleChange(e){
-        const search = e.target.value;
-        setSearch(search);
+    state = {
+        books: [],
+        q: "",
+        message: "Search For A Book To Begin!"
+    };
+
+    handleChange(e) {
+        const { name, value } = e.target;
+        this.setState({
+            [name]: value
+        });
     }
 
-    function handleSubmit(e){
-        e.preventDefault();      
-        API.searchBook(search)
-            .then(res => {
-                const stateResults = res.data.items;
-                // console.log(stateResults)
-                dispatch({
-                    type: "search",
-                    search: search,
-                    results: stateResults,
-                    saved: state.saved
-                });
-            console.log(state);
-            });
+    handleSubmit(e) {
+        e.preventDefault();
+        this.getBooks();
     }
 
-    return (
-        <Jumbotron className="Container">
-            <form >
-            <Form.Group>
-                <Form.Label>Book</Form.Label>
-                <Form.Control 
-                type="text" 
-                placeholder="Book Name" 
-                onChange={handleChange}
-                />
-            </Form.Group>
-            <Button variant="primary" onClick={handleSubmit}>
-                Submit
-            </Button>
-            </form>
-        </Jumbotron>
-    );
+    render() {
+        return (
+            <Jumbotron className="Container">
+                <form >
+                    <Form.Group>
+                        <Form.Label>Book</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Book Name"
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                    <Button variant="primary" onClick={handleSubmit}>
+                        Submit
+                </Button>
+                </form>
+            </Jumbotron>
+        );
+    }
+
 }
 
 export default BookSearch;
