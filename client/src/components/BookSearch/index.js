@@ -18,6 +18,7 @@ class BookSearch extends Component {
         this.setState({
             [name]: value
         });
+<<<<<<< HEAD
     }
 
     handleSubmit(e) {
@@ -25,6 +26,14 @@ class BookSearch extends Component {
         this.getBooks();
     }
 
+=======
+    }
+
+    
+    handleSubmit(e) {
+
+    }
+>>>>>>> cd6b6c2a369c1706f6765ac3c8fc9d9377d158c8
     render() {
         return (
             <Jumbotron className="Container">

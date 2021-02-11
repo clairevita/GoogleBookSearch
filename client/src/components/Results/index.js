@@ -7,7 +7,11 @@ import API from '../../utils/API';
 function Results() {
 
     state = {
+<<<<<<< HEAD
         books: []
+=======
+        
+>>>>>>> cd6b6c2a369c1706f6765ac3c8fc9d9377d158c8
     }
 
     function handleSave(book) {
