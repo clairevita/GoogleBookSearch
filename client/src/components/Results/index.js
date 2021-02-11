@@ -1,29 +1,27 @@
 import React from "react";
 import { Card, Row, Col, Button, Image } from "react-bootstrap";
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import { useSearchContext } from '../../utils/SearchContext';
 import './Results.css';
 import API from '../../utils/API';
 
 function Results() {
-    const [state, dispatch] = useSearchContext();
-    let results = state.results;
-    console.log(state);
+
+    state = {
+        
+    }
+
     function handleSave(book) {
-        let newSaves;
-        if (!state.saved){
-            newSaves = [book];
-        } else {
-            newSaves = state.saved.concat([book]);
-        }
-            dispatch ({
-                type: "save",
-                search: state.search,
-                results: state.results,
-                saved: newSaves
-            })
-            API.saveBook(book);
-            console.log(state);
+        const book = this.state.books.find(book => book.id === id);
+
+        API.saveBook({
+          googleId: book.id,
+          title: book.volumeInfo.title,
+          subtitle: book.volumeInfo.subtitle,
+          link: book.volumeInfo.link,
+          authors: book.volumeInfo.authors,
+          description: book.volumeInfo.description,
+          image: book.volumeInfo.imageLinks.thumbnail
+        }).then(() => this.getBooks());
     }
 
     return (
@@ -42,7 +40,6 @@ function Results() {
                                 <Col sm={2} className="text-center p-2">
                                     <Image
                                         src={book.volumeInfo.imageLinks.thumbnail}
-                                        alt={book.volumeInfo.title}
                                         rounded
                                         fluid
                                     />
