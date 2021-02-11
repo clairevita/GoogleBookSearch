@@ -10,16 +10,16 @@ function Results() {
     let results = state.results;
 
     function handleSave(book) {
-        const currentSaved = state.saved;
-        API.saveBook(book)
-        .then(
-            dispatch ({
-                type: "save",
-                search: state.search,
-                results: state.results,
-                saved: currentSaved.push([book])
-            })
-        )
+        console.log(book);
+        API.saveBook({
+            googleId: book.id,
+            title: book.volumeInfo.title,
+            subtitle: book.volumeInfo.subtitle,
+            link: book.volumeInfo.infoLink,
+            authors: book.volumeInfo.authors,
+            description: book.volumeInfo.description,
+            image: book.volumeInfo.imageLinks.thumbnail
+          });
     }
 
     return (

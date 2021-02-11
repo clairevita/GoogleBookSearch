@@ -24,8 +24,7 @@ function BookSearch() {
                 dispatch({
                     type: "search",
                     search: search,
-                    results: stateResults,
-                    saved: state.saved
+                    results: stateResults
                 });
             console.log(state);
             });

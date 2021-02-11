@@ -4,8 +4,7 @@ import API from './API';
 const SearchContext = createContext(
     {
         search: "",
-        results: [],
-        saved: []
+        results: []
     }
 );
 const { Provider } = SearchContext;
@@ -16,7 +15,6 @@ function reducer(state, action) {
             return {
                 search: action.search,
                 results: action.results,
-                saved: action.saved
             };
         case "save":
             return {
