@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './BookSearch.css';
 import API from "../../utils/API";
-
 import { useSearchContext } from '../../utils/SearchContext';
 
 function BookSearch() {
@@ -32,23 +31,23 @@ function BookSearch() {
             });
     }
 
-        return (
-            <Jumbotron className="Container">
-                <form >
-                    <Form.Group>
-                        <Form.Label>Book</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder="Book Name"
-                            onChange={handleChange}
-                        />
-                    </Form.Group>
-                    <Button variant="primary" onClick={handleSubmit}>
-                        Submit
-                </Button>
-                </form>
-            </Jumbotron>
-        );
-    }
+    return (
+        <Jumbotron className="Container">
+            <form >
+            <Form.Group>
+                <Form.Label>Book</Form.Label>
+                <Form.Control 
+                type="text" 
+                placeholder="Book Name" 
+                onChange={handleChange}
+                />
+            </Form.Group>
+            <Button variant="primary" onClick={handleSubmit}>
+                Submit
+            </Button>
+            </form>
+        </Jumbotron>
+    );
+}
 
 export default BookSearch;

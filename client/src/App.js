@@ -7,13 +7,11 @@ import Saved from './pages/Saved';
 import NoMatch from './pages/NoMatch';
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { SearchProvider } from './utils/SearchContext';
 
 function App() {
   return (
     <Router>
       <div>
-      <SearchProvider>
         <NavComp />
         <JumbotronComp />
         <Switch>
@@ -27,7 +25,6 @@ function App() {
             <NoMatch />
           </Route>
         </Switch>
-      </SearchProvider>
       </div>
     </Router>
   );

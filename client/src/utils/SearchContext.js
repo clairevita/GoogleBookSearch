@@ -3,8 +3,9 @@ import API from './API';
 
 const SearchContext = createContext(
     {
-        search: "",
-        results: []
+        search: "Hello?",
+        results: [],
+        saved: []
     }
 );
 const { Provider } = SearchContext;
@@ -14,12 +15,18 @@ function reducer(state, action) {
         case "search":
             return {
                 search: action.search,
-                results: action.results
+                results: action.results,
+                saved: action.saved
             };
         case "save":
             return {
                 search: action.search,
-                results: action.results
+                results: action.results,
+                saved: action.saved
+            };
+        case "delete":
+            return {
+
             };
         default:
             return state
