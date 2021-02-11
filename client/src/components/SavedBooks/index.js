@@ -5,10 +5,29 @@ import { useSearchContext } from '../../utils/SearchContext';
 import './SavedBooks.css';
 import API from '../../utils/API';
 
-class Saved extends Component {
+class SavedBooks extends Component {
     state = {
-        books: []
+        saved: []
     };
+
+    componentDidMount() {
+        this.getSavedBooks();
+    }
+
+    getSavedBooks = () => {
+        API.getSavedBooks()
+            .then(res =>
+                this.setState({
+                    books: res.data
+                })
+            )
+            .catch(err => console.log(err));
+    };
+
+    handleBookDelete = id => {
+        API.deleteBook(id).then(res => this.getSavedBooks());
+    };
+
     render() {
         return (
             <Jumbotron className="Container">
@@ -36,7 +55,7 @@ class Saved extends Component {
                                         className="mr-2 mb-2"
                                     >More Info</Button>
                                     <Button
-                                        // onClick={() => this.handleDelete(book)}
+                                        onClick={() => this.handleBookDelete(book._id)}
                                         className="mr-2 mb-2"
                                     >Delete Book</Button>
                                 </Col>
